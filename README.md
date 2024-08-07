@@ -36,9 +36,11 @@ An arcade game based on the Stacker game.
 - LM386 Audio Amplifier
 
 **Game**
+
 ![IMG_4166](https://github.com/user-attachments/assets/fa7c5365-227f-4762-ac57-586ccb4e5363)
 
 **Sound API**
+
 ![IMG_4170](https://github.com/user-attachments/assets/826c610a-6129-4e6e-a47e-be8d5db8dcc1)
 
 ## Prototype V2
