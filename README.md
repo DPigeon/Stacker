@@ -6,6 +6,8 @@ An arcade game based on the Stacker game.
 - Backend: 2 ESP32 WROOM32. Written in C++
   - Main board: Core functionality of the Game
   - Second board: Sound API
+
+See [Wiki](https://github.com/DPigeon/Stacker/wiki) for more info.
  
 # Features
 ## Web App
