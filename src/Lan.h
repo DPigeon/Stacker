@@ -8,14 +8,13 @@
 class Lan {
   
   private:
-    const int serialBaud = 115200;
     const int port = 80;
-    const char* ssId;
-    const char* password;
+    const String ssId = "SSID";
+    const String password = "";
     const char* hostname;
   
   public:
-    Lan(char* hostname, char* ssId, char* password);
+    Lan(const char* hostname);
     void initConnection();
 };
 

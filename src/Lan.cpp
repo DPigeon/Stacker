@@ -1,14 +1,11 @@
-#include "Wifi.h"
+#include "Lan.h"
 
-Lan::Lan(char* hostname, char* ssId, char* password) {
+Lan::Lan(const char* hostname) {
   this->hostname = hostname;
-  this->ssId = ssId;
-  this->password = password;
 }
 
 void Lan::initConnection() {
   const int waitDelay = 1000;
-  Serial.begin(serialBaud);
   WiFi.mode(WIFI_STA); // Set WiFi to station mode and disconnect from an AP if it was previously connected.
   WiFi.setHostname(hostname);
   WiFi.begin(ssId, password);
