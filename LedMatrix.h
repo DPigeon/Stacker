@@ -8,7 +8,7 @@
 #include "Buzzer.h"
 #include "Util.cpp"
 
-#define DIN_PIN 15    // Data In
+#define DIN_PIN 15   // Data In
 #define CLK_PIN 2    // Clock SCK
 #define CS_PIN 4     // Load Chip Select
 #define BUZZER_PIN 14
