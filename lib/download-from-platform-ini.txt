@@ -1,0 +1,4 @@
+lib/AsyncTCP https://github.com/me-no-dev/AsyncTCP
+lib/ESP_Async_WebServer https://github.com/me-no-dev/ESPAsyncWebServer
+Firebase_Arduino_Client_Library_for_ESP8266_and_ESP32 https://github.com/mobizt/Firebase-ESP-Client/releases
+lib/Timer https://github.com/JChristensen/Timer/blob/master/Timer.h

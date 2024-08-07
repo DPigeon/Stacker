@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>
+      Arcade
+    </title>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body {
+        background-image: url('https://img.freepik.com/free-vector/background-abstract-pixel-rain_23-2148374568.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+      .bottomRight {
+        float: right;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <a href="/">
+        <button type="button" class="nes-btn is-primary" href="/">
+          > <i class="nes-icon coin is-small"></i> Home
+        </button>
+      </a>
+      <a href="/highscores">
+        <button type="button" class="nes-btn is-primary">
+          <i class="nes-icon trophy is-small"></i> HiScores
+        </button>
+      </a>
+      <br>
+      <br>
+      <label for="textbox-name"><span style="color:white;">Name:</span></label>
+      <input type="text" id="textbox-name" name="textbox-name">
+      <br>
+      <br>
+      <b><span style="color:white;">Status:</span></b> <span id="clientState" style="color:white;">%CLIENTSTATE%</span>
+      <br>
+      <b><span style="color:white;">Game:</span></b> <span id="gameState" style="color:white;">%GAMESTATE%</span>
+      <br>
+      <br>
+      <b><span style="color:white;">Score:</span></b> <span id="score" style="color:white;">%SCORE%</span>
+      <br>
+      <b><span style="color:white;">Timer:</span></b> <span id="chrono" style="color:white;">%CHRONO%</span>
+      <br>
+      <br>
+      <button 
+        id="stack-button" 
+        type="button" 
+        style="
+          cursor:pointer;
+          border:15px solid black;
+          background-color:rgb(0, 162, 255);
+          border-radius:50%;
+          width:200px;
+          height:200px;
+        ">
+        <i class="nes-icon close is-medium"></i>
+      </button>
+    </center>
+    <div class="bottomRight">
+      <a href="/info" class="nes-badge is-splited">
+        <span class="is-dark">Stack</span>
+        <span class="is-primary">3.3.2</span>
+      </a>
+    </div>
+    <script>
+      var timer = 0;
+      var score = 0;
+      window.addEventListener('load', function() {
+        var ws = new WebSocket(`ws://${window.location.hostname}/ws`);
+        ws.onopen = function(event) {
+          console.log('WS connection opened!');
+          document.getElementById('clientState').innerHTML = "Connected";
+        }
+        ws.onclose = function(event) {
+          console.log('WS connection closed!');
+          document.getElementById('clientState').innerHTML = "Disconnected";
+          if (location) {
+            location.reload();
+          }
+        }
+        ws.onerror = function(error) {
+          console.log(error);
+        };
+        ws.onmessage = function(event) {
+          if (event.data == "In Used") {
+            document.getElementById('gameState').innerHTML = "In Used";
+          } else if (event.data == "Ready") {
+            document.getElementById('gameState').innerHTML = "Ready";
+          } else if (event.data.startsWith("UpdateChrono:")) {
+            timer = event.data.replace("UpdateChrono: ", "");
+            document.getElementById('chrono').innerHTML = timer + " s";
+          } else if (event.data == "StopChrono") {
+            timer = 0;
+            score = 0;
+            document.getElementById('chrono').innerHTML = timer + " s";
+          } else if (event.data.startsWith("UpdateScore:")) {
+            score = event.data.replace("UpdateScore: ", "");
+            document.getElementById('score').innerHTML = score;
+          }
+        };
+        document.getElementById('stack-button').addEventListener('click', function() {
+          if (ws.readyState != 1 && location) { // Reset board but web still up
+            location.reload();
+          } else {
+            var name = document.getElementById('textbox-name').value;
+            if (name === "") {
+              alert("Enter your name to play!");
+            } else {
+              ws.send('stack: ' + name);
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
