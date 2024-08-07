@@ -26,8 +26,32 @@ An arcade game based on the Stacker game.
 
 ![IMG_4155](https://github.com/user-attachments/assets/f517464f-52dd-4a28-b672-0cb0b6fd2928)
 
+## Game
+![IMG_4159](https://github.com/user-attachments/assets/92130ed2-ea29-4c59-aacc-dffb21c92db2)
 
+## Prototype V3
+- 2 ESP32 WROOM32
+- [RGB Matrix P3 64x64](https://www.waveshare.com/wiki/RGB-Matrix-P3-64x64)
+- Speaker 0.5W (8Ω)
+- LM386 Audio Amplifier
+  
+![IMG_4166](https://github.com/user-attachments/assets/fa7c5365-227f-4762-ac57-586ccb4e5363)
 
+## Prototype V2
+- ESP32 WROOM32
+- MAX7219 8x8 Matrix
+- Buzzers
 
+![IMG_3058](https://github.com/user-attachments/assets/467367c0-fd89-4c2f-a507-dac21a91a46a)
+![IMG_3057](https://github.com/user-attachments/assets/3ed87742-84d0-46af-9835-f1795b3b4a82)
 
+## Prototype V1
+- Arduino Uno
+- MAX7219 8x8 Matrix
+- Button
+- Buzzer
+- Arduino ProtoShield
+- Resistor
 
+![IMG_0827](https://github.com/user-attachments/assets/31236a9c-fc5b-471d-82a1-cdc4178ee254)
+![IMG_0828](https://github.com/user-attachments/assets/e2cd47a4-061b-4d3e-82dd-378f0d6f0876)
